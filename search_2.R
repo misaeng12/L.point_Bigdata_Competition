@@ -71,18 +71,3 @@ search1_final <- filter(search1_week, myCLAC2_NM!="") %>% group_by(myCLAC2_NM, m
   filter(complete.cases(search1_final))
 
 
-
-##### final search count & plot ---------------------------------------- #####
-
-count <- final %>% group_by(myCLAC_NM, CLAC2_NM, myWEEK) %>% count
-write.csv(count, "count.csv", row.names=F, fileEncoding="utf-8")
-
-x <- count$myWEEK[1:26]
-df1 <- data.frame(n = filter(count, CLAC2_NM=="여성의류아우터")$n,
-                  group = rep(c("fitted", "true"), c(26, 18)), x = x)
-
-ggplot(data=df1, aes(x=x, y=n, group=group)) + geom_line(aes(color=group, linetype=group), size=1.5) +
-  theme_light() + theme(axis.text.x = element_text(angle=45, hjust=1), legend.title=element_blank()) +
-  scale_color_manual(values=c("#318CE7", "#FF6961"), labels=c("true","fitted")) + 
-  scale_linetype_discrete(labels=c("true","fitted")) + labs(x="", y="구매건수") + ylim(500, 5000)
-
