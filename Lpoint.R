@@ -24,8 +24,6 @@ write.csv(final, "final.csv", row.names=F, filenEncoding="utf=8")
 
 
 
-
-
 #### rebuy ----------------------------------------------- ####
 
 # 6개월 간 재구매율
@@ -50,8 +48,6 @@ rebuy_week <- final %>% distinct(CLNT_ID, CLAC2_NM, SESS_ID, myWEEK) %>%
 
 rebuy_week_p <- left_join(rebuy_week, select(count, -myCLAC_NM)) %>% mutate(myREBUY_WEEK_P = myREBUY_WEEK/n)
 cor(rebuy_week_p$myREBUY_WEEK_P, rebuy_week_p$n)
-
-
 
 
 
