@@ -66,4 +66,3 @@ master_brand$myPOP_BR <- 0
 master_brand[master_brand$PD_BRA_NM %in% best, "myPOP_BR"] <- 1
 
 write.csv(master_brand, "master_pop_br.csv", row.names=F, fileEncoding ="utf-8")
-
