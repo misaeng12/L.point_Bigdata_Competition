@@ -69,5 +69,3 @@ search1_week <- left_join(mysearch1, final[!duplicated(final$SESS_ID), c("SESS_I
 search1_final <- filter(search1_week, myCLAC2_NM!="") %>% group_by(myCLAC2_NM, myWEEK) %>% count %>%
   select(CLAC2_NM=myCLAC2_NM, myWEEK, mySEARCH1=n) %>%
   filter(complete.cases(search1_final))
-
-
